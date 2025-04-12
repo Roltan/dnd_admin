@@ -22,8 +22,13 @@ class SubKlass extends Model
         return $this->belongsTo(Klass::class);
     }
 
-    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->morphToMany(Skill::class, 'caster', 'table', 'caster_id');
+        return $this->morphMany(Skill::class, 'caster');
+    }
+
+    public function units(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->HasMany(KlassUnit::class);
     }
 }

@@ -19,6 +19,6 @@ class Skill extends Model
 
     public function caster(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
-        return $this->morphTo(__FUNCTION__, 'table', 'caster_id');
+        return $this->morphTo(__FUNCTION__, 'caster_type', 'caster_id');
     }
 }

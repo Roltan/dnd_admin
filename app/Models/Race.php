@@ -28,8 +28,8 @@ class Race extends Model
         return $this->HasMany(SubRace::class);
     }
 
-    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->morphToMany(Skill::class, 'caster', 'table', 'caster_id');
+        return $this->morphMany(Skill::class, 'caster');
     }
 }

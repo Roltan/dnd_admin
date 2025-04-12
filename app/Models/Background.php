@@ -18,7 +18,7 @@ class Background extends Model
     public $timestamps = false;
 
     protected $casts = [
-        'equipment'=>'array',
+        'equipment' => 'array',
     ];
 
     public function proficiencies(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -29,5 +29,10 @@ class Background extends Model
     public function abilities(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->BelongsToMany(Ability::class);
+    }
+
+    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Skill::class, 'caster');
     }
 }

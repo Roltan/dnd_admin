@@ -18,6 +18,11 @@ class Feat extends Model
     public $timestamps = false;
 
     protected $casts = [
-        'condition'=>'array',
+        'condition' => 'array',
     ];
+
+    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Skill::class, 'caster');
+    }
 }

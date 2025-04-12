@@ -12,7 +12,7 @@ class Klass extends Model
 
     protected $connection = 'dnd_hero';
 
-    protected $table = 'klass';
+    protected $table = 'klasses';
 
     protected $guarded = [];
 
@@ -35,7 +35,7 @@ class Klass extends Model
 
     public function units(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->HasMany(Unit::class);
+        return $this->HasMany(KlassUnit::class);
     }
 
     public function proficiencies(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -43,8 +43,8 @@ class Klass extends Model
         return $this->BelongsToMany(Proficiency::class);
     }
 
-    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    public function skills(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->morphToMany(Skill::class, 'caster', 'table', 'caster_id');
+        return $this->morphMany(Skill::class, 'caster');
     }
 }
