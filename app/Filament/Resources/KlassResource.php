@@ -7,6 +7,7 @@ use App\Filament\Resources\KlassResource\RelationManagers;
 use App\Filament\Tabs\Klass\Klass as TabsKlass;
 use App\Filament\Tabs\Klass\Equipment;
 use App\Filament\Tabs\Klass\KlassUnits;
+use App\Filament\Tabs\Klass\Proficiency;
 use App\Filament\Tabs\Klass\Skills;
 use App\Filament\Tabs\Klass\SubKlass;
 use App\Models\Klass;
@@ -36,6 +37,7 @@ class KlassResource extends Resource
                 ])->schema([
                     Tabs::make('Основные')->tabs([
                         TabsKlass::make(),
+                        Proficiency::make(),
                         Equipment::make(),
                         Skills::make(),
                         KlassUnits::make(),
