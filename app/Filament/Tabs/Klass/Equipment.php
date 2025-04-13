@@ -28,7 +28,7 @@ class Equipment
                                     ->label('Тип')
                                     ->searchable()
                                     ->options(\App\Models\Equipment::all()
-                                        ->pluck('name', 'id')
+                                        ->pluck('name', 'name')
                                         ->toArray()
                                     )
                                     ->required(),

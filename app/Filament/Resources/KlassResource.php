@@ -20,6 +20,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class KlassResource extends Resource
@@ -51,7 +52,13 @@ class KlassResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('Класс'),
+                TextColumn::make('manual')
+                    ->label('Подробности')
+                    ->url(fn ($state) => $state, true),
+                TextColumn::make('source')
+                    ->label('Источник'),
             ])
             ->filters([
                 //
