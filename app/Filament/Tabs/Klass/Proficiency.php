@@ -30,7 +30,7 @@ class Proficiency
                     ->required(),
                 Select::make('abilities')
                     ->label('Владения навыками')
-                    ->required('abilities')
+                    ->relationship('abilities')
                     ->multiple()
                     ->searchable()
                     ->options(Ability::query()

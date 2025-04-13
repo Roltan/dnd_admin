@@ -21,12 +21,18 @@ class KlassUnits
                     ->schema([
                         TextInput::make('name')
                             ->label('Название')
+                            ->columnSpan(2)
                             ->required(),
                         TextInput::make('lvl')
                             ->label('Уровень получения')
                             ->numeric()
                             ->minValue(1)
                             ->maxValue(20)
+                            ->required(),
+                        TextInput::make('value')
+                            ->label('Максимум')
+                            ->numeric()
+                            ->minValue(1)
                             ->required(),
                         Toggle::make('is_resources')
                             ->label('Лимит или расходный')
