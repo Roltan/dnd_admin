@@ -2,12 +2,13 @@
 
 namespace App\Filament\Tabs\Klass;
 
+use App\Filament\Tabs\SkillsTab;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 
-class SubKlass
+class SubKlassTab
 {
     public static function make()
     {
@@ -22,9 +23,9 @@ class SubKlass
                             ->label('Название')
                             ->required(),
 
-                        Tabs::make('Характиристика подкласса')->tabs([
-                            Skills::make(),
-                            KlassUnits::make(),
+                        Tabs::make('Особенности подкласса')->tabs([
+                            SkillsTab::make(),
+                            KlassUnitsTab::make(),
                         ])
                     ])
             ]);

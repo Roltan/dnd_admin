@@ -7,7 +7,7 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use App\Models\Ability;
 
-class Klass
+class KlassTab
 {
     public static function make()
     {
@@ -22,7 +22,7 @@ class Klass
                     ->label('Подробности')
                     ->default('https://dnd.su/class/'),
                 TextInput::make('source')
-                    ->label('Происхождение')
+                    ->label('Источник')
                     ->default('Player`s handbook'),
                 Select::make('dice_hp')
                     ->label('Кость здоровья')

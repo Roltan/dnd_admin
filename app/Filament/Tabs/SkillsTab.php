@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Tabs\Klass;
+namespace App\Filament\Tabs;
 
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Tabs\Tab;
@@ -8,7 +8,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
-class Skills
+class SkillsTab
 {
     public static function make()
     {

@@ -4,19 +4,15 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\KlassResource\Pages;
 use App\Filament\Resources\KlassResource\RelationManagers;
-use App\Filament\Tabs\Klass\Klass as TabsKlass;
-use App\Filament\Tabs\Klass\Equipment;
-use App\Filament\Tabs\Klass\KlassUnits;
-use App\Filament\Tabs\Klass\Proficiency;
-use App\Filament\Tabs\Klass\Skills;
-use App\Filament\Tabs\Klass\SubKlass;
+use App\Filament\Tabs\Klass\EquipmentTab;
+use App\Filament\Tabs\Klass\KlassTab;
+use App\Filament\Tabs\Klass\KlassUnitsTab;
+use App\Filament\Tabs\Klass\ProficiencyTab;
+use App\Filament\Tabs\Klass\SubKlassTab;
+use App\Filament\Tabs\SkillsTab;
 use App\Models\Klass;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Tabs\Tab;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -37,12 +33,12 @@ class KlassResource extends Resource
                     'lg' => 1,
                 ])->schema([
                     Tabs::make('Основные')->tabs([
-                        TabsKlass::make(),
-                        Proficiency::make(),
-                        Equipment::make(),
-                        Skills::make(),
-                        KlassUnits::make(),
-                        SubKlass::make()
+                        KlassTab::make(),
+                        ProficiencyTab::make(),
+                        EquipmentTab::make(),
+                        SkillsTab::make(),
+                        KlassUnitsTab::make(),
+                        SubKlassTab::make()
                     ])
                 ])
             ]);

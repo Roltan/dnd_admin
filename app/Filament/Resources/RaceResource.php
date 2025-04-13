@@ -4,14 +4,18 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RaceResource\Pages;
 use App\Filament\Resources\RaceResource\RelationManagers;
+use App\Filament\Tabs\Race\AbilityTab;
+use App\Filament\Tabs\Race\RaceTab;
+use App\Filament\Tabs\Race\RolePlayTab;
+use App\Filament\Tabs\Race\SubRaceTab;
+use App\Filament\Tabs\SkillsTab;
 use App\Models\Race;
-use Filament\Forms;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class RaceResource extends Resource
 {
@@ -23,7 +27,17 @@ class RaceResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Grid::make([
+                    'lg' => 1,
+                ])->schema([
+                    Tabs::make('Основные')->tabs([
+                        RaceTab::make(),
+                        RolePlayTab::make(),
+                        AbilityTab::make(),
+                        SkillsTab::make(),
+                        SubRaceTab::make(),
+                    ])
+                ])
             ]);
     }
 

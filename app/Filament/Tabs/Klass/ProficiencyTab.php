@@ -9,7 +9,7 @@ use App\Models\Ability;
 use App\Models\Proficiency as ModelsProficiency;
 use Illuminate\Contracts\Database\Query\Builder;
 
-class Proficiency
+class ProficiencyTab
 {
     public static function make()
     {

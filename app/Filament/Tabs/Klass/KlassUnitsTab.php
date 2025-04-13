@@ -7,7 +7,7 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
-class KlassUnits
+class KlassUnitsTab
 {
     public static function make()
     {
