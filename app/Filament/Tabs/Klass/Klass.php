@@ -5,6 +5,7 @@ namespace App\Filament\Tabs\Klass;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
+use App\Models\Ability;
 
 class Klass
 {
@@ -38,14 +39,10 @@ class Klass
                     ->required(),
                 Select::make('abilities_spell')
                     ->label('Заклинательная характеристика')
-                    ->options([
-                        'Сила',
-                        'Интеллект',
-                        'Ловкость',
-                        'Мудрость',
-                        'Телосложение',
-                        'Харизма'
-                    ]),
+                    ->options(Ability::query()
+                        ->whereNull('parent_id')
+                        ->pluck('name', 'id')
+                        ->toArray()),
             ]);
     }
 }

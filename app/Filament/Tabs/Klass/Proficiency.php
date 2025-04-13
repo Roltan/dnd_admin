@@ -7,6 +7,7 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use App\Models\Ability;
 use App\Models\Proficiency as ModelsProficiency;
+use Illuminate\Contracts\Database\Query\Builder;
 
 class Proficiency
 {
@@ -18,26 +19,21 @@ class Proficiency
                 Select::make('save_stat')
                     ->label('Владения спас бросками')
                     ->columnSpan(2)
-                    ->options([
-                        'Сила',
-                        'Интеллект',
-                        'Ловкость',
-                        'Мудрость',
-                        'Телосложение',
-                        'Харизма'
-                    ])
-                    ->multiple(true)
+                    ->options(Ability::query()
+                        ->whereNull('parent_id')
+                        ->pluck('name', 'id')
+                        ->toArray())
+                    ->multiple()
                     ->required(),
                 Select::make('abilities')
                     ->label('Владения навыками')
-                    ->relationship('abilities')
+                    ->relationship(
+                        name: 'abilities',
+                        titleAttribute: 'name',
+                        modifyQueryUsing: fn (Builder $query) => $query->whereNotNull('parent_id')
+                    )
                     ->multiple()
                     ->searchable()
-                    ->options(Ability::query()
-                        ->whereNotNull('parent_id')
-                        ->pluck('name', 'id')
-                        ->toArray()
-                    )
                     ->required(),
                 TextInput::make('abilities_count')
                     ->label('Количество навыков')
@@ -46,12 +42,9 @@ class Proficiency
                 Select::make('proficiency')
                     ->label('Владения предметами')
                     ->columnSpan(2)
-                    ->relationship('proficiencies')
-                    ->multiple(true)
-                    ->options(ModelsProficiency::all()
-                        ->pluck('name', 'id')
-                        ->toArray()
-                    )
+                    ->relationship('proficiencies', 'name')
+                    ->multiple()
+                    ->searchable()
             ]);
     }
 }
