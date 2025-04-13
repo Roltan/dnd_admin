@@ -4,11 +4,22 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FeatResource\Pages;
 use App\Filament\Resources\FeatResource\RelationManagers;
+use App\Filament\Tabs\Feat\ConditionTab;
+use App\Filament\Tabs\Feat\FeatTab;
+use App\Filament\Tabs\Feat\ResourcesTab;
+use App\Filament\Tabs\SkillsTab;
 use App\Models\Feat;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Tabs\Tab;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,7 +34,16 @@ class FeatResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Grid::make([
+                    'lg' => 1,
+                ])->schema([
+                    Tabs::make('Основные')->tabs([
+                        FeatTab::make(),
+                        ConditionTab::make(),
+                        ResourcesTab::make(),
+                        SkillsTab::make()
+                    ])
+                ])
             ]);
     }
 
@@ -31,7 +51,8 @@ class FeatResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('Черта')
             ])
             ->filters([
                 //
