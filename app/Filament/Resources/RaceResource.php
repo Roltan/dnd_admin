@@ -15,6 +15,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class RaceResource extends Resource
@@ -45,7 +46,13 @@ class RaceResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('Раса'),
+                TextColumn::make('manual')
+                    ->label('Подробности')
+                    ->url(fn ($state) => $state, true),
+                TextColumn::make('source')
+                    ->label('Источник'),
             ])
             ->filters([
                 //
