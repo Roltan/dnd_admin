@@ -14,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -44,7 +45,14 @@ class SpellResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('Название'),
+                TextColumn::make('klass.name')
+                    ->label('Классы'),
+                TextColumn::make('subKlass.name')
+                    ->label('Подклассы'),
+                TextColumn::make('lvl')
+                    ->label("Уровень ячейки")
             ])
             ->filters([
                 //

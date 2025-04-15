@@ -52,7 +52,10 @@ class FeatResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Черта')
+                    ->label('Черта'),
+                TextColumn::make('manual')
+                    ->label('Подробности')
+                    ->url(fn ($state) => $state, true),
             ])
             ->filters([
                 //

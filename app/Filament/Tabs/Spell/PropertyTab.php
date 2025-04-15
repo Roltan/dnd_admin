@@ -16,18 +16,15 @@ class PropertyTab
                 TextInput::make('distance')
                     ->label('Дистанция')
                     ->numeric()
-                    ->minValue(0)
-                    ->required(),
+                    ->minValue(0),
                 TextInput::make('time_cast')
                     ->label('Время сотворения')
                     ->numeric()
-                    ->minValue(0)
-                    ->required(),
+                    ->minValue(0),
                 TextInput::make('duration')
                     ->label('Длительность')
                     ->numeric()
-                    ->minValue(0)
-                    ->required(),
+                    ->minValue(0),
                 Toggle::make('need_concentration')
                     ->label('Необходимость концентрации')
                     ->default(false),

@@ -21,8 +21,7 @@ class SpellTab
                     ->label('Название')
                     ->required(),
                 TextInput::make('scripts')
-                    ->label('Скрипт')
-                    ->required(),
+                    ->label('Скрипт'),
                 Textarea::make('description')
                     ->label('Описание')
                     ->columnSpan(2)

@@ -14,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class BackgroundResource extends Resource
@@ -43,7 +44,11 @@ class BackgroundResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('Происхождение'),
+                TextColumn::make('manual')
+                    ->label('Подробности')
+                    ->url(fn ($state) => $state, true),
             ])
             ->filters([
                 //
