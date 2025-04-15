@@ -18,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Filters\SelectFilter;
 
 class SpellResource extends Resource
 {
@@ -46,16 +47,32 @@ class SpellResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->searchable()
                     ->label('Название'),
                 TextColumn::make('klass.name')
+                    ->searchable()
                     ->label('Классы'),
                 TextColumn::make('subKlass.name')
+                    ->searchable()
                     ->label('Подклассы'),
                 TextColumn::make('lvl')
+                    ->sortable()
                     ->label("Уровень ячейки")
             ])
             ->filters([
-                //
+                SelectFilter::make('lvl')
+                    ->label('Уровень ячейки')
+                    ->options([
+                        1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9
+                    ])
+                    ->multiple(),
+
+                SelectFilter::make('klass')
+                    ->label('Класс')
+                    ->relationship('klass', 'name')
+                    ->searchable()
+                    ->multiple()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
