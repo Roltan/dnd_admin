@@ -9,7 +9,7 @@ class SubKlass extends Model
 {
     use HasFactory;
 
-    protected $connection = 'dnd_hero';
+    protected $connection = 'dnd_library';
 
     protected $table = 'sub_klasses';
 

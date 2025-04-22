@@ -9,7 +9,7 @@ class Background extends Model
 {
     use HasFactory;
 
-    protected $connection = 'dnd_hero';
+    protected $connection = 'dnd_library';
 
     protected $table = 'backgrounds';
 

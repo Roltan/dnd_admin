@@ -9,7 +9,7 @@ class Feat extends Model
 {
     use HasFactory;
 
-    protected $connection = 'dnd_hero';
+    protected $connection = 'dnd_library';
 
     protected $table = 'feats';
 

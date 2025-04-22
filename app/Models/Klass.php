@@ -10,7 +10,7 @@ class Klass extends Model
 {
     use HasFactory;
 
-    protected $connection = 'dnd_hero';
+    protected $connection = 'dnd_library';
 
     protected $table = 'klasses';
 
@@ -20,7 +20,6 @@ class Klass extends Model
 
     protected $casts = [
         'save_stat'=>'array',
-        'equipment'=>'array',
     ];
 
     public function abilities(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
