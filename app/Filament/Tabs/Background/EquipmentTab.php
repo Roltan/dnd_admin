@@ -2,10 +2,8 @@
 
 namespace App\Filament\Tabs\Background;
 
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs\Tab;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
 
 class EquipmentTab
 {
@@ -14,32 +12,19 @@ class EquipmentTab
         return Tab::make('Снаряжение')
             ->columns(1)
             ->schema([
-                Repeater::make('equipment')
-                    ->label('Начальное снаряжение')
-                    ->schema([
-                        Repeater::make('items')
-                            ->label('Вариант')
-                            ->columns(2)
-                            ->schema([
-                                Select::make('type')
-                                    ->label('Тип')
-                                    ->searchable()
-                                    ->options(\App\Models\Equipment::all()
-                                        ->pluck('name', 'name')
-                                        ->toArray()
-                                    )
-                                    ->required(),
-                                TextInput::make('count')
-                                    ->label('Количество')
-                                    ->numeric()
-                                    ->default(1)
-                            ])
-                            ->collapsible()
-                            ->cloneable()
-                    ])
-                    ->collapsible()
-                    ->cloneable()
-                    ->required()
+                Textarea::make('equipment')
+                    ->label('Доступное начальное снаряжение')
+                    ->hint('Тут необходимо закодировать логическое выражение о доступных вариантах начального снаряжения')
+                    ->helperText("
+                    КАЖДЫЙ специальный символ должен отделяться пробелами.\n
+                    Пробелы в названиях предметом заменять на '_'.\n
+                    Названия предметов всегда писать в единственном числе.\n
+                    'и', 'или' - логические операторы.\n
+                    Разрешены скобки, которые объединяют часть выражения в одно целое для операторов вокруг скобок.\n
+                    Перед названием можно поставить число, определяющее количество этого предмета, без указания числа, будет 1.\n
+                    '#' - означает что следующее слово надо воспринимать как категорию предметов, а не 1 предмет
+                ")
+                    ->required(),
             ]);
     }
 }

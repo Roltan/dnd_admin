@@ -18,7 +18,7 @@ class BackgroundTab
                     ->required(),
                 TextInput::make('manual')
                     ->label('Подробности')
-                    ->default('https://dnd.su/class/'),
+                    ->default('https://dnd.su/backgrounds/'),
                 TextInput::make('source')
                     ->label('Источник')
                     ->default('Player`s handbook'),
